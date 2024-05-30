@@ -56,7 +56,7 @@ echo "INFO: Successfully verified docker installation!"
 # Create a folder
 if [ ! -e "$FILENAME" ]; then
     # Make directory
-    mkdir actions-runner && cd actions-runner
+    mkdir /data/actions-runner && cd /data/actions-runner
     # Download the latest runner package
     curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
     # Optional: Validate the hash
