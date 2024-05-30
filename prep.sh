@@ -34,10 +34,12 @@ if ! docker --version; then
     sudo apt-get update
 
     sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+fi
 	
-    if ! docker --version; then
-        echo "ERROR: Docker install failed"
-        exit 1
+if ! docker --version; then
+    echo "ERROR: Docker install failed"
+    exit 1
 fi
 
 # Attempt to run a container if not in a container
