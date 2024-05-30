@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILENAME=actions-runner
+FILENAME=/data/actions-runner
 PREP="prep.sh"
 
 cd /data
@@ -54,7 +54,7 @@ fi
 echo "INFO: Successfully verified docker installation!"
 
 # Create a folder
-if [ ! -e "$FILENAME" ]; then
+if [ ! -d "$FILENAME" ]; then
     # Make directory
     mkdir /data/actions-runner && cd /data/actions-runner
     # Download the latest runner package
