@@ -8,8 +8,8 @@ cd /data
 # Install Python
 if ! python3; then
     echo "INFO: Installing Python"
-    apt update
-    apt install python3
+    apt-get update
+    apt-get install -y python3 
 fi
 
 if ! python3; then
@@ -21,7 +21,7 @@ if ! docker --version; then
     echo "INFO: Installing Docker"
     # Add Docker's official GPG key:
     apt-get update
-    apt-get install ca-certificates curl
+    apt-get -y install ca-certificates curl
     install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -33,7 +33,7 @@ if ! docker --version; then
     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get update
 
-    sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 	
     if ! docker --version; then
         echo "ERROR: Docker install failed"
