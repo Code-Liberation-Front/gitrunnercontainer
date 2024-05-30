@@ -1,0 +1,12 @@
+FROM ubuntu:jammy
+
+VOLUME ["/data"]
+WORKDIR /
+
+COPY prep.sh .
+
+ENV RUNNER_TOKEN="changeme"
+ENV URL="defaulturl"
+
+RUN chmod +x run.sh
+CMD ["./prep.sh"]
