@@ -8,5 +8,5 @@ COPY prep.sh .
 ENV RUNNER_TOKEN="changeme"
 ENV URL="defaulturl"
 
-RUN chmod +x run.sh
+RUN chmod +x prep.sh
 CMD ["./prep.sh"]
