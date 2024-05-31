@@ -14,6 +14,7 @@ fi
 
 if ! python3; then
     echo "ERROR: Python cannot be installed"
+    exit 1
 fi
 
 # Install docker
@@ -40,14 +41,14 @@ fi
 	
 if ! docker --version; then
     echo "ERROR: Docker install failed"
-    exit 1
+    exit 2
 fi
 
 # Attempt to run a container if not in a container
 if [ ! -f /.dockerenv  ]; then
 	if ! docker run --rm hello-world; then
 		echo "ERROR: Could not get docker to run the hello world container"
-		exit 2
+		exit 3
 	fi
 fi
 
@@ -57,6 +58,7 @@ echo "INFO: Successfully verified docker installation!"
 useradd actions
 usermod -aG docker actions
 usermod -aG sudo actions
+echo 
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
@@ -65,7 +67,7 @@ fi
 
 if [ ! -e "$PREP" ]; then
     echo "ERROR Runner install failed"
-    exit 3
+    exit 4
 fi
 
 echo "INFO: Runner Successfuly Installed!"
