@@ -62,7 +62,7 @@ if [ ! -d "$DIRECTORY" ]; then
     # Change permissions
     chmod +777 actions-runner-linux-x64-2.316.1.tar.gz
     # Extract the installer
-    tar xzf ./actions-runner-osx-x64-2.316.1.tar.gz
+    tar xzf actions-runner-osx-x64-2.316.1.tar.gz
     # Config runner
     ./config.sh --url $URL --token $RUNNER_TOKEN
 fi
