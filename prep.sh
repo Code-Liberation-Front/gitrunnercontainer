@@ -2,7 +2,6 @@
 
 DIRECTORY="/data/actions-runner"
 PREP="prep.sh"
-RUNAS="sudo -u actions"
 
 cd /data
 
@@ -60,12 +59,7 @@ usermod -aG docker actions
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
-    sudo su -l actions -c '
-    mkdir /data/actions-runner && cd /data/actions-runner
-    curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
-    tar xzf ./actions-runner-linux-x64-2.316.1.tar.gz
-    ./config.sh --url $URL --token $RUNNER_TOKEN
-    '
+    su actions -c ./action.sh
 fi
 
 if [ ! -e "$PREP" ]; then
