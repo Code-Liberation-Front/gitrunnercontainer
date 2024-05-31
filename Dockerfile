@@ -9,4 +9,4 @@ ENV RUNNER_TOKEN="changeme"
 ENV URL="defaulturl"
 
 RUN chmod +x prep.sh
-CMD ["./prep.sh"]
+CMD ["sudo ./prep.sh"]
