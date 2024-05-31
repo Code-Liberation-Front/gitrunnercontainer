@@ -79,5 +79,7 @@ fi
 
 echo "INFO: Runner Successfuly Installed!"
 
-chmod +x /data/actions-runner/run.sh
-source /data/actions-runner/run.sh
+cd /data/actions-runner
+
+chmod +x run.sh
+source ./run.sh
