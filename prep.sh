@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIRECTORY="/data/actions-runner"
-PREP="prep.sh"
+PREP="/data/actions-runner/run.sh"
 SUDOER="/etc/sudoers"
 
 cd /data
@@ -79,5 +79,5 @@ fi
 
 echo "INFO: Runner Successfuly Installed!"
 
-chmod +x run.sh
-source run.sh
+chmod +x /data/actions-runner/run.sh
+source /data/actions-runner/run.sh
