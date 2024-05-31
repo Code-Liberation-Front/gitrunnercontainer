@@ -61,6 +61,8 @@ if [ ! -d "$DIRECTORY" ]; then
     curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
     # Change permissions
     chmod +777 actions-runner-linux-x64-2.316.1.tar.gz
+    # Allow it to run as root
+    export {AGENT_ALLOW_RUNASROOT="1"}
     # Extract the installer
     tar xzf ./actions-runner-linux-x64-2.316.1.tar.gz
     # Config runner
