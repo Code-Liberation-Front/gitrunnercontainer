@@ -2,6 +2,7 @@
 
 DIRECTORY="/data/actions-runner"
 PREP="prep.sh"
+RUNAS="sudo -u actions"
 
 cd /data
 
@@ -53,20 +54,18 @@ fi
 
 echo "INFO: Successfully verified docker installation!"
 
+# Create user to run actions
+useradd actions
+usermod -aG docker actions
+
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
-    # Create user to run actions
-    useradd actions
-    usermod -aG docker actions
-    su actions
-    # Make directory
+    sudo su -l actions -c '
     mkdir /data/actions-runner && cd /data/actions-runner
-    # Download the latest runner package
     curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
-    # Extract the installer
     tar xzf ./actions-runner-linux-x64-2.316.1.tar.gz
-    # Config runner
     ./config.sh --url $URL --token $RUNNER_TOKEN
+    '
 fi
 
 if [ ! -e "$PREP" ]; then
