@@ -59,8 +59,8 @@ if [ ! -d "$DIRECTORY" ]; then
     mkdir /data/actions-runner && cd /data/actions-runner
     # Download the latest runner package
     curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
-    # Optional: Validate the hash
-    echo "392b9d7b6d5b4d4f3814dbf874641b894f0c72447cdf05ce93158832d2d49b6b  actions-runner-osx-x64-2.316.1.tar.gz" | shasum -a 256 -c
+    # Change permissions
+    chmod +777 actions-runner-linux-x64-2.316.1.tar.gz
     # Extract the installer
     tar xzf ./actions-runner-osx-x64-2.316.1.tar.gz
     # Config runner
