@@ -2,6 +2,7 @@
 
 DIRECTORY="/data/actions-runner"
 PREP="prep.sh"
+SUDOER="/etc/sudoers"
 
 cd /data
 
@@ -55,10 +56,11 @@ fi
 echo "INFO: Successfully verified docker installation!"
 
 # Create user to run actions and add them to groups
+apt install sudo
 useradd actions
 usermod -aG docker actions
 usermod -aG sudo actions
-echo 
+echo "actions ALL = (root) NOPASSWD: /data/actions-runner/">>$SUDOER
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
