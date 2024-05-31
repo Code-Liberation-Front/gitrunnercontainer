@@ -65,7 +65,7 @@ echo "actions ALL = (root) NOPASSWD: /data/actions-runner/">>$SUDOER
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
     mkdir /data/actions-runner 
-    su actions -c /data/action.sh
+    sudo -u actions /data/action.sh
 fi
 
 if [ ! -e "$PREP" ]; then
@@ -74,6 +74,3 @@ if [ ! -e "$PREP" ]; then
 fi
 
 echo "INFO: Runner Successfuly Installed!"
-
-chmod +x run.sh
-source run.sh
