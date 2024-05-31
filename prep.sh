@@ -56,16 +56,20 @@ fi
 echo "INFO: Successfully verified docker installation!"
 
 # Create user to run actions and add them to groups
-apt install sudo
-useradd actions
-usermod -aG docker actions
-usermod -aG sudo actions
-echo "actions ALL = (root) NOPASSWD: /data/actions-runner/">>$SUDOER
+#apt install sudo
+#useradd actions
+#usermod -aG docker actions
+#echo 'actions ALL=(sudo) NOPASSWD: ALL' | sudo EDITOR='tee -a' visudo
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
-    mkdir /data/actions-runner 
-    sudo -u actions /data/action.sh
+    mkdir /data/actions-runner
+    #sudo -u actions /data/action.sh
+    cd /data/actions-runner
+    curl -o actions-runner-linux-x64-2.316.1.tar.gz -L https://github.com/actions/runner/releases/download/v2.316.1/actions-runner-linux-x64-2.316.1.tar.gz
+    tar xzf ./actions-runner-linux-x64-2.316.1.tar.gz
+    RUNNER_ALLOW_RUNASROOT="1" ./config.sh --url $URL --token $RUNNER_TOKEN
+
 fi
 
 if [ ! -e "$PREP" ]; then
@@ -74,3 +78,6 @@ if [ ! -e "$PREP" ]; then
 fi
 
 echo "INFO: Runner Successfuly Installed!"
+
+chmod +x run.sh
+source run.sh
