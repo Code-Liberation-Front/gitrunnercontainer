@@ -82,4 +82,4 @@ echo "INFO: Runner Successfuly Installed!"
 cd /data/actions-runner
 
 chmod +x run.sh
-source ./run.sh
+source RUNNER_ALLOW_RUNASROOT="1" ./run.sh
