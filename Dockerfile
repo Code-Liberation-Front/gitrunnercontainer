@@ -4,7 +4,7 @@ VOLUME ["/data"]
 WORKDIR /
 
 COPY prep.sh .
-COPY action.sh .
+COPY action.sh /data/
 
 ENV RUNNER_TOKEN="changeme"
 ENV URL="defaulturl"
