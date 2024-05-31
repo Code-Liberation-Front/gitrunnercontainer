@@ -53,9 +53,10 @@ fi
 
 echo "INFO: Successfully verified docker installation!"
 
-# Create user to run actions
+# Create user to run actions and add them to groups
 useradd actions
 usermod -aG docker actions
+usermod -aG sudo actions
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
