@@ -59,7 +59,7 @@ usermod -aG docker actions
 
 # Create a folder
 if [ ! -d "$DIRECTORY" ]; then
-    su actions -c action.sh
+    su actions -c /data/action.sh
 fi
 
 if [ ! -e "$PREP" ]; then
